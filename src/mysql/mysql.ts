@@ -10,10 +10,10 @@ export default class MySQL {
     constructor() {
         console.log('Initialized Class');
         this.cnn = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'password',
-            database: 'DB_USERS',
+            host: process.env.LOCAL_SERVER_HOST,
+            user: process.env.LOCAL_SERVER_USER,
+            password: process.env.LOCAL_SERVER_PASSWORD,
+            database: process.env.LOCAL_SERVER_DATABASE,
         })
 
         this.connectDB()

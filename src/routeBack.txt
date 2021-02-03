@@ -1,0 +1,30 @@
+Las tecnologías a aprender dependen del enfoque, eso es un hecho. Pero básicamente se puede separar en:
+
+* Un lenguaje de programación que se pueda comunicar con el servidor.
+* Un motor de bases de datos (Relacional: MySql o NoSQL: MongoDB).
+* Conocimiento en protocolos de Internet (HTTP, POP, TCP/IP).
+* Patrones de diseño de software (Ej: MVC ) y por supuesto POO.
+* Manejo de APIs y Web Services en general.
+
+***********************************************************************************
+********************************* INTERNET ****************************************
+***********************************************************************************
+* Dominio
+* Hosting
+* Servidor
+* DNS
+* HTTP
+* NAVEGADOR
+* SO
+* TERMINAL
+* SISTEMA DE REDES
+* BASE DE DATOS - ADMINISTRACION - CONSULTAR DESDE UN LENGUAJE DE PROGRAMACION
+* API
+* REST
+* AUTENTICACION (COCKIE, JWT)
+* CACHE (CDN) ADMINISTRAR CACHE DEL SERVIDOR - CONOCER REDIS
+* SEGURIDAD (HTTPS, CORS, CONTRASEÑAS, BCRYPT)
+* TESTING (PRUEBAS UNITARIAS, INTEGRACION Y FUNCIONALES)
+* (PRINCIPIOS) PATRONES DE DISEÑO, TDD, KISS, DRY
+
+cumbiadelatotalasclasdelatotapadelantedgcomar

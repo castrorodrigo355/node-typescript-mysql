@@ -1,9 +1,8 @@
+import dotEnv from "dotenv";
+dotEnv.config();
+
 import Server from "./server";
-import MySQL from "./mysql/mysql";
-
-const server = Server.init(3000)
-
-const mysql = new MySQL();
+const server = Server.init(3001)
 
 server.start(() => {
     console.log("Server working on port: " + server.port)
