@@ -1,0 +1,11 @@
+import Server from "./server";
+// import "./database/databse"
+import MySQL from "./mysql/mysql";
+
+const server = Server.init(3000)
+
+const mysql = new MySQL();
+
+server.start(() => {
+    console.log("Server working on port: " + server.port)
+})
