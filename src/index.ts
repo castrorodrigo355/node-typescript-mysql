@@ -1,5 +1,4 @@
 import Server from "./server";
-// import "./database/databse"
 import MySQL from "./mysql/mysql";
 
 const server = Server.init(3000)
