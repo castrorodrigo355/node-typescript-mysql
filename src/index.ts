@@ -1,8 +1,9 @@
+import "./database/database";
+import Server from "./server";
 import dotEnv from "dotenv";
 dotEnv.config();
 
-import Server from "./server";
-const server = Server.init(3001)
+const server = Server.init(Number(process.env.LOCAL_SERVER_PORT))
 
 server.start(() => {
     console.log("Server working on port: " + server.port)

@@ -1,96 +1,53 @@
 import { Request, Response, RequestHandler } from "express";
+import User from "../models/user";
 // import bcrypt from "bcrypt";
-import MySQL from "../mysql/mysql";
 
-export const getUsers: RequestHandler = (req: Request, res: Response) => {
-    const query = `SELECT * FROM tusers`
-    MySQL.executeQuery(query, (err: any, result: Object[]) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err
-            })
-        } else {
-            res.json({
-                ok: true,
-                result
-            })
-        }
-    })
+export const getUsers: RequestHandler = async (req: Request, res: Response) : Promise<any>=> {
+   try {
+    const users = await User.find();
+    res.json(users)
+  } catch (error) {
+    res.json({Message: "Not Users Found !!!"})
+  }
 };
 
-export const getUserById: RequestHandler = async (req: Request, res: Response) => {
+export const getUserById: RequestHandler = async (req: Request, res: Response): Promise<any> => {
     const id = req.params.id;
-    const query = `SELECT * FROM tusers WHERE user_id = ${id}`
-    MySQL.executeQuery(query, (err: any, result: Object) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err
-            })
-        } else {
-            res.json({
-                ok: true,
-                result
-            })
-        }
-    })
+    try {
+    const userfound = await User.findById(id);
+    res.json(userfound)
+  } catch (error) {
+    res.json({Message: "Not Users Found !!!"})
+  }
 };
 
-export const createUser: RequestHandler = (req: Request, res: Response) => {
-    const { name, email, password } = req.body;
-    const query = `INSERT INTO 
-        tusers(user_name, user_email, user_password) 
-        VALUES ('${name}', '${email}', '${password}');`
-    MySQL.executeQuery(query, (err: any, result: Object) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err
-            })
-        } else {
-            res.json({
-                ok: true,
-                result
-            })
-        }
-    })
+export const createUser: RequestHandler = async (req: Request, res: Response): Promise<any> => {
+   try {
+    const user = new User(req.body);
+    const userSaved = await user.save();
+    res.json(userSaved)
+  } catch (error) {
+    res.json({Message: "Not User Created !!!"})
+  }
 };
 
-export const deleteUser: RequestHandler = async (req: Request, res: Response) => {
-    const id = req.params.id;
-    const query = `DELETE FROM tusers WHERE user_id = ${id};`
-    MySQL.executeQuery(query, (err: any, result: Object) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err
-            })
-        } else {
-            res.json({
-                ok: true,
-                result
-            })
-        }
-    })
+export const deleteUser: RequestHandler = async (req: Request, res: Response): Promise<any> => {
+  const id = req.params.id;
+    try {
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.json(deletedUser)
+  } catch (error) {
+    res.json({Message: "Not User Found !!!"})
+  }
 }
 
-export const updateUser: RequestHandler = (req: Request, res: Response) => {
+export const updateUser: RequestHandler = async (req: Request, res: Response) : Promise<any> => {
     const id = req.params.id;
     const { name, email } = req.body;
-
-    const query = `UPDATE tusers SET user_name='${name}', user_email='${email}' WHERE user_id = ${id}`
-    MySQL.executeQuery(query, (err: any, result: Object) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err
-            })
-        } else {
-            res.json({
-                ok: true,
-                result
-            })
-        }
-    })
+  try {
+    const updatedUser = await User.findByIdAndUpdate( id, req.body, { new: true });
+    res.json(updatedUser)
+  } catch (error) {
+    res.json({Message: "Not User Found !!!"})
+  }
 };

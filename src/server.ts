@@ -15,8 +15,8 @@ export default class Server {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
-        this.app.use("/api/v1/usersUrl", userRouter)
-        this.app.use("/api/v1/authUrl", authRouter)
+        this.app.use(`${process.env.SERVER_APP_URL_USERS}`, userRouter)
+        this.app.use(`${process.env.SERVER_APP_URL_INIT}`, authRouter)
     }
 
     static init(p: number) {
