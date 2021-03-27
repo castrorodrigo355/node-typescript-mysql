@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const uri = 'mongodb://localhost/settledb';
 
-mongoose.connect(uri, {
+mongoose.connect('mongodb://localhost/settledb', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -10,5 +10,5 @@ mongoose.connect(uri, {
   .catch(err => console.log(err));
 
 mongoose.connection.on("open", _ => {
-  console.log("URI: ", uri)
+  console.log("URI: ", 'mongodb://localhost/settledb')
 })

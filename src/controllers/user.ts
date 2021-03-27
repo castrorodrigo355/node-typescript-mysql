@@ -4,8 +4,15 @@ import User from "../models/user";
 
 export const getUsers: RequestHandler = async (req: Request, res: Response): Promise<any> => {
   try {
+    /*
     const users = await User.find();
     res.json(users)
+    */
+    res.json([
+      { id: 1, name: "Rodrigo", },
+      { id: 2, name: "Fernando", },
+      { id: 3, name: "Giovani", }
+    ])
   } catch (error) {
     res.json({ Message: "Not Users Found !!!" })
   }
