@@ -1,21 +1,15 @@
-const express = require("express");
-const User = require("../models/user");
-const userRouter = express.Router();
+const { User } = require("../models/user");
 
-userRouter.get("/", async (req, res) => {
-  await User.find()
-    .then((users) => res.json(users))
-    .catch((error) => res.json({ Error: error }));
-});
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.json({ Error: error });
+  }
+};
 
-module.exports = userRouter;
-
-/*
- 
-export const getUserById: RequestHandler = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
+const getUserById = async (req, res) => {
   const id = req.params.id;
   try {
     const userfound = await User.findById(id);
@@ -25,10 +19,7 @@ export const getUserById: RequestHandler = async (
   }
 };
 
-export const createUser: RequestHandler = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
+const createUser = async (req, res) => {
   try {
     const user = new User(req.body);
     const userSaved = await user.save();
@@ -38,10 +29,7 @@ export const createUser: RequestHandler = async (
   }
 };
 
-export const deleteUser: RequestHandler = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
+const deleteUser = async (req, res) => {
   const id = req.params.id;
   try {
     const deletedUser = await User.findByIdAndDelete(id);
@@ -51,10 +39,7 @@ export const deleteUser: RequestHandler = async (
   }
 };
 
-export const updateUser: RequestHandler = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
+const updateUser = async (req, res) => {
   const id = req.params.id;
   try {
     const updatedUser = await User.findByIdAndUpdate(id, req.body, {
@@ -66,4 +51,10 @@ export const updateUser: RequestHandler = async (
   }
 };
 
- */
+module.exports = {
+  getUsers,
+  getUserById,
+  createUser,
+  deleteUser,
+  updateUser,
+};

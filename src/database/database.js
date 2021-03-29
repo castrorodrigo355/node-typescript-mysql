@@ -5,6 +5,8 @@ mongoose
   .connect("mongodb://localhost/settledb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: true,
+    useCreateIndex: true,
   })
   .then((db) => console.log("Db is connected"))
   .catch((err) => console.log(err));
