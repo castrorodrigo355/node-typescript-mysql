@@ -19,16 +19,6 @@ export const getUserById = async (req, res) => {
 	}
 };
 
-export const createUser = async (req, res) => {
-	try {
-		const user = new User(req.body);
-		const userSaved = await user.save();
-		res.json(userSaved);
-	} catch (error) {
-		res.status(500).json({ Error: error });
-	}
-};
-
 export const deleteUser = async (req, res) => {
 	const id = req.params.id;
 	try {

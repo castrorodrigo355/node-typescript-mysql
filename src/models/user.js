@@ -5,10 +5,14 @@ const userSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
+		},
+		email: {
+			type: String,
+			required: true,
 			unique: true,
 		},
-		age: {
-			type: Number,
+		password: {
+			type: String,
 			required: true,
 		},
 	},

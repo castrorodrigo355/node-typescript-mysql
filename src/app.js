@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import userRouter from "./routes/user";
+import authRouter from "./routes/auth";
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(`${process.env.SERVER_APP_URL_AUTH}`, authRouter);
 app.use(`${process.env.SERVER_APP_URL_USERS}`, userRouter);
 // app.use(`${process.env.SERVER_APP_URL_INIT}`, authRouter);
 
