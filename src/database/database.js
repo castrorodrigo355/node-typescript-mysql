@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { configApp } from "../config";
+import { configApp } from "../config/config";
 const Schema = mongoose.Schema;
 
 (async () => {
