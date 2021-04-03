@@ -1,60 +1,52 @@
-const { User } = require("../models/user");
+import User from "../models/user";
 
-const getUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.json({ Error: error });
-  }
+export const getUsers = async (req, res) => {
+	try {
+		const users = await User.find();
+		res.json(users);
+	} catch (error) {
+		res.status(500).json({ Error: error });
+	}
 };
 
-const getUserById = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const userfound = await User.findById(id);
-    res.json(userfound);
-  } catch (error) {
-    res.json({ Message: "Not Users Found !!!" });
-  }
+export const getUserById = async (req, res) => {
+	const id = req.params.id;
+	try {
+		const userfound = await User.findById(id);
+		res.json(userfound);
+	} catch (error) {
+		res.status(500).json({ Error: error });
+	}
 };
 
-const createUser = async (req, res) => {
-  try {
-    const user = new User(req.body);
-    const userSaved = await user.save();
-    res.json(userSaved);
-  } catch (error) {
-    res.json({ Message: "Not User Created !!!" });
-  }
+export const createUser = async (req, res) => {
+	try {
+		const user = new User(req.body);
+		const userSaved = await user.save();
+		res.json(userSaved);
+	} catch (error) {
+		res.status(500).json({ Error: error });
+	}
 };
 
-const deleteUser = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.json(deletedUser);
-  } catch (error) {
-    res.json({ Message: "Not User Found !!!" });
-  }
+export const deleteUser = async (req, res) => {
+	const id = req.params.id;
+	try {
+		const deletedUser = await User.findByIdAndDelete(id);
+		res.json(deletedUser);
+	} catch (error) {
+		res.json({ Message: "Not User Created !!!" });
+	}
 };
 
-const updateUser = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const updatedUser = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    res.json(updatedUser);
-  } catch (error) {
-    res.json({ Message: "Not User Found !!!" });
-  }
-};
-
-module.exports = {
-  getUsers,
-  getUserById,
-  createUser,
-  deleteUser,
-  updateUser,
+export const updateUser = async (req, res) => {
+	const id = req.params.id;
+	try {
+		const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
+		res.json(updatedUser);
+	} catch (error) {
+		res.json({ Message: "Not User Created !!!" });
+	}
 };

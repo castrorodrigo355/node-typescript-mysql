@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon src/index.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "nodemon src/index.js --exec babel-node"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +23,10 @@
     "mysql": "github:mysqljs/mysql"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
     "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.9",
     "@types/dotenv": "^8.2.0",

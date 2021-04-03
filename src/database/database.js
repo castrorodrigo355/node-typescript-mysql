@@ -1,14 +1,19 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { configApp } from "../config";
 const Schema = mongoose.Schema;
 
-mongoose
-  .connect("mongodb://localhost/settledb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: true,
-    useCreateIndex: true,
-  })
-  .then((db) => console.log("Db is connected"))
-  .catch((err) => console.log(err));
+(async () => {
+	try {
+		const db = await mongoose.connect(configApp.mongoDBURL, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useFindAndModify: true,
+			useCreateIndex: true,
+		});
+		console.log("Db is connected to " + db.connection.name);
+	} catch (error) {
+		console.log({ Error: error });
+	}
+})();
 
-module.exports = { Schema, mongoose };
+export { Schema, mongoose };
