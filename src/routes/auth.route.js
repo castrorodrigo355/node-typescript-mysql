@@ -1,7 +1,11 @@
 import { Router } from "express";
-import { validateJWT } from "../middlewares/jwt";
-import { validateUserCreation } from "../middlewares/user";
-import { loginUser, registerUser, revalidateToken } from "../controllers/auth";
+import { validateJWT } from "../middlewares/jwt.middleware";
+import { validateUserCreation } from "../middlewares/user.middleware";
+import {
+	loginUser,
+	registerUser,
+	revalidateToken,
+} from "../controllers/auth.controller";
 
 const authRouter = Router();
 

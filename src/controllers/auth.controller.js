@@ -1,6 +1,6 @@
-import User from "../models/user";
+import User from "../models/user.model";
 import bcrypt from "bcryptjs";
-import { generateJWT } from "../helpers/jwt";
+import { generateJWT } from "../helpers/jwt.helper";
 
 export const registerUser = async (req, res) => {
 	const { name, email, password } = req.body;
