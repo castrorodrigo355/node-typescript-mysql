@@ -15,6 +15,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(`${process.env.SERVER_APP_URL_AUTH}`, authRouter);
 app.use(`${process.env.SERVER_APP_URL_USERS}`, userRouter);
 app.use(`${process.env.SERVER_APP_URL_EVENTS}`, eventRouter);
-// app.use(`${process.env.SERVER_APP_URL_INIT}`, authRouter);
 
 export default app;
